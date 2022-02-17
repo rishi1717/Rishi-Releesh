@@ -47,13 +47,14 @@ function validate() {
     document.getElementById('emailError').innerText="";
     document.getElementById('numberError').innerText="";
     document.getElementById('messageError').innerText="";
+    document.getElementById('submitted').innerText="";
       
-    if( uname.value == "" || uname.value.length < 3) {
-        if(uname.value.length<3){
-            document.getElementById('nameError').innerText="Atleast 3 charecters required"; 
+    if( uname.value == "" || uname.value.length < 2) {
+        if(uname.value==""){
+            document.getElementById('nameError').innerText="Provide a Name"; 
         }
         else{            
-            document.getElementById('nameError').innerText="Provide valid name";     
+            document.getElementById('nameError').innerText="Atleat 2 character required";     
         }
         uname.focus();
          return false;
@@ -73,5 +74,34 @@ function validate() {
         message.focus();
         return false;
     }
-    return( true );
+    a = true;
+    return( a );
+    
+
  }
+
+ $("#submit-form").submit((e)=>{
+    e.preventDefault()
+    if(a==true){
+        document.getElementById('submitted').innerText="Submitting...";
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbwIPCMeMOv5f-JmgDn6GVyTuP9UOxgAuuxc0djC/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                document.getElementById('submitted').innerText="Submitted succesfully";
+
+                document.getElementById('name').value = "";
+                document.getElementById('email').value = "";
+                document.getElementById('message').value  = "";
+                document.getElementById('number').value  = "";
+                a = false;
+            },
+        error:function (err){
+            alert("Something Error")
+
+        }
+    }) 
+    }
+    
+})

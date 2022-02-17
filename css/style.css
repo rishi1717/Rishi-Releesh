@@ -649,3 +649,13 @@ header .follow a:hover{
     }
 
 }
+
+.errorText{
+    color: rgb(181, 0, 0);
+    font-size: 1.3rem;
+}
+
+#submitted{
+    color: green;
+    font-size: 1.5rem;
+}
