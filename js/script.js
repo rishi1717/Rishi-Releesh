@@ -41,6 +41,9 @@ const email = document.getElementById('email')
 const number = document.getElementById('number')
 const message = document.getElementById('message')
 
+const regname=/^[a-zA-Z][a-zA-Z][a-zA-Z ]*$/;
+const regmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function validate() {
 
     document.getElementById('nameError').innerText="";
@@ -49,21 +52,32 @@ function validate() {
     document.getElementById('messageError').innerText="";
     document.getElementById('submitted').innerText="";
       
-    if( uname.value == "" || uname.value.length < 2) {
+    if( uname.value == "" || uname.value.length < 2 || uname.value.match(regname) != uname.value) {
         if(uname.value==""){
             document.getElementById('nameError').innerText="Provide a Name"; 
         }
-        else{            
+        else if(uname.value.length < 2){            
             document.getElementById('nameError').innerText="Atleat 2 character required";     
+        }
+        else{
+            document.getElementById('nameError').innerText="Not a valid name"; 
         }
         uname.focus();
          return false;
     }
-    if( email.value == "" ) {
-        document.getElementById('emailError').innerText="Provide valid Email";
+    if( email.value == "" || email.value.match(regmail) != email.value ) {
+
+        if(email.value == ""){
+            document.getElementById('emailError').innerText="Provide an Email";
+        }
+        else{
+           document.getElementById('emailError').innerText="Provide valid Email"; 
+        }
+        
         email.focus() ;
         return false;
     }
+
     if( number.value == "" || number.value<1000000000 || number.value> 9999999999) {
         document.getElementById('numberError').innerText="Provide valid Number";
         number.focus();
