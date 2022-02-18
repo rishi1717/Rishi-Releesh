@@ -379,7 +379,7 @@
 
     <div class="row">
 
-        <form id="submit-form" action="" onsubmit="return (validate())">
+        <form id="submit-form" action="">
 
             <input id="name" type="text" placeholder="name" name="name" class="box">
             <p class="errorText" id="nameError"></p>
@@ -392,7 +392,7 @@
             <p class="errorText" id="messageError"></p>
             
             <p id="submitted"></p>
-            <input type="submit" class="btn" value="send message">
+            <input id="submit" type="submit" class="btn" value="send message">
             
 
         </form>
@@ -431,6 +431,7 @@
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
+<script src="js/validate.js"></script>
 
 </body>
 </html>
