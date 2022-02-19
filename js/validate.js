@@ -108,6 +108,10 @@ $("#submit-form").submit((e)=>{
                 document.getElementById('email').value = "";
                 document.getElementById('message').value  = "";
                 document.getElementById('number').value  = "";
+
+                setTimeout(() => {
+                    document.getElementById('submitted').innerText="";
+                },3000);
                 
             },
         error:function (err){
@@ -116,8 +120,8 @@ $("#submit-form").submit((e)=>{
         }
     }) 
     }
-    else{
-        document.getElementById('submitted').innerText="";
-    }
+    // else{
+    //     document.getElementById('submitted').innerText="";
+    // }
     
 })
